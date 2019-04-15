@@ -157,7 +157,7 @@
 
         <div>
             <div class="wrap">
-                <form action="">
+                <form class="form-group">
                     <label for="name" class="statement">Name (Required):</label><input class='inputbox' type="text"
                         id="name" required></br>
                     <label class="statement">Link to Photo Image (Required):</label><input class='inputbox' type="text"
@@ -300,7 +300,7 @@
                             <label>Strongly disagree</label>
                         </li>
                     </ul>
-                    <label class="statement">I see myself as extraverted, enthusiastic..</label>
+                    <label class="statement">I see myself as extraverted, enthusiastic.</label>
                     <ul class='likert'>
                         <li>
                             <input type="radio" name="7" value="5">
@@ -323,9 +323,81 @@
                             <label>Strongly disagree</label>
                         </li>
                     </ul>
+                    <label class="statement">Your travel plans are more likely to look like a rough list of ideas than a
+                        detailed itinerary.</label>
+                    <ul class='likert'>
+                        <li>
+                            <input type="radio" name="8" value="5">
+                            <label>Strongly agree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="8" value="4">
+                            <label>Agree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="8" value="3">
+                            <label>Neutral</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="8" value="2">
+                            <label>Disagree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="8" value="1">
+                            <label>Strongly disagree</label>
+                        </li>
+                    </ul>
+                    <label class="statement">If your friend is sad about something, your first instinct is to support
+                        them emotionally, not try to solve their problem.</label>
+                    <ul class='likert'>
+                        <li>
+                            <input type="radio" name="9" value="5">
+                            <label>Strongly agree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="9" value="4">
+                            <label>Agree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="9" value="3">
+                            <label>Neutral</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="9" value="2">
+                            <label>Disagree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="9" value="1">
+                            <label>Strongly disagree</label>
+                        </li>
+                    </ul>
+                    <label class="statement">People can rarely upset you.</label>
+                    <ul class='likert'>
+                        <li>
+                            <input type="radio" name="10" value="5">
+                            <label>Strongly agree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="10" value="4">
+                            <label>Agree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="10" value="3">
+                            <label>Neutral</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="10" value="2">
+                            <label>Disagree</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="10" value="1">
+                            <label>Strongly disagree</label>
+                        </li>
+                    </ul>
+
                     <div class="buttons">
                         <!-- <button class="clear">Clear</button> -->
-                        <button type="button" class="submit" data-toggle="modal"
+                        <button type="submit" class="submit" data-toggle="modal"
                             data-target="#friendMatch">Submit</button>
                     </div>
                 </form>
@@ -352,7 +424,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="ClearVars()">Close</button>
+                        <button type="button" class="btn btn-default clear-modal" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -394,6 +466,12 @@
 
 </html>
 <script type="text/JavaScript">
+
+$(".clear-modal").on("click", function(){
+    $("#best-match").remove();
+})
+
+
 
 $(".submit").on("click", function(event){
     event.preventDefault();
@@ -462,8 +540,8 @@ var getFriendMatch = function(){
 
         retVal.forEach(friend => {
             $("#friend").append(
-                $(`<h2>Name: ${friend.name}</h2>
-                <div><img id="friend-img" src="${friend.picture}" alt="Picture Not Available"></img></div>`)
+                $(`<div id="best-match"><h2>Name: ${friend.name}</h2>
+                <div><img id="friend-img" src="${friend.picture}" alt="Picture Not Available"></img></div></div>`)
             
             )
             
